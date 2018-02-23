@@ -10,7 +10,7 @@ const tokenForUser = (user) => {
 
 const signup = (req, res, next) => {
 
-  const {name, email, password} = req.body
+  const { name, email, password } = req.body
   const saltRounds = 5
 
   if (!email || !password) {
@@ -26,7 +26,7 @@ const signup = (req, res, next) => {
         })
         .catch((err) => {
           console.error(err)
-          res.json({error: 'Error saving user to database.'})
+          res.status(500).json({error: 'Error saving user to database.'})
         })
     })
     .catch((err) => {
